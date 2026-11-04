@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Animation</title>
+
+    <style>
+        body{
+            background-color: black;
+        }
+
+        .main{
+            margin-left: 400px;
+            
+        }
+
+        .music1, .music2, .music3,
+        .music4, .music5, .music6,.music7, .music8, .music9{
+            display: inline-block;
+            position: fixed;
+            bottom: 100px;
+            width: 20px;
+            border-radius: 5px;
+            background-color: rgb(124, 2, 116);
+            animation-duration: 0.5s;
+            animation-iteration-count: infinite;
+            animation-direction: alternate-reverse;
+        }
+
+        .music1 {
+            margin-left: 100px;
+            animation-name: music1;
+        }
+
+        .music2 {
+            margin-left: 140px;
+            animation-name: music2;
+            animation-delay: 0.1s;
+        }
+
+        .music3 {
+            margin-left: 180px;
+            animation-name: music3;
+            animation-delay: 0.4s;
+        }
+
+        .music4 {
+            margin-left: 220px;
+            animation-name: music1;
+            animation-delay: 0.1s;
+        }
+
+        .music5 {
+            margin-left: 260px;
+            animation-name: music2;
+            animation-delay: 0.3s;
+        }
+
+        .music6 {
+            margin-left: 300px;
+            animation-name: music3;
+            animation-delay: 0.5s;
+        }
+        .music7 {
+            margin-left: 340px;
+            animation-name: music1;
+            animation-delay: 0.5s;
+        }
+        .music8 {
+            margin-left: 380px;
+            animation-name: music2;
+            animation-delay: 0.5s;
+        }
+        .music9 {
+            margin-left: 420px;
+            animation-name: music3;
+            animation-delay: 0.5s;
+        }
+
+        @keyframes music1 {
+            from {
+                 height: 250px;
+                 background-color: rgb(128, 1, 128);
+                 }
+            to { 
+                height: 20px; 
+                background-color: color-mix(in srgb, rgb(154, 1, 1) 50%, rgb(86, 2, 2) 50%);
+            }
+        }
+
+        @keyframes music2 {
+            from { 
+                height: 100px; 
+                background-color:rgb(128, 1, 128);
+            }
+            to {
+                 height: 40px; 
+                 background-color: color-mix(in srgb, rgb(128, 1, 128) 50%, rgb(255, 60, 0) 50%);
+                }
+        }
+
+        @keyframes music3 {
+            from {
+                 height: 200px;
+                 background-color: rgb(128, 1, 128);
+                 }
+            to { 
+                height: 30px; 
+                background-color: color-mix(in srgb, rgb(103, 2, 103) 50%, rgb(232, 4, 42) 50%);
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <div class="music1"></div>
+        <div class="music2"></div>
+        <div class="music3"></div>
+        <div class="music4"></div>
+        <div class="music5"></div>
+        <div class="music6"></div>
+        <div class="music7"></div>
+        <div class="music8"></div>
+        <div class="music9"></div>
+        
+    </div>
+</body>
+</html>
