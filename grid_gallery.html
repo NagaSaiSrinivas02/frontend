@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Grid gallery task</title>
+    <style>
+        .parent>img{
+            height: 100%;
+            width: 100%;
+        }
+        .parent{
+            display: grid;
+            height: 100vh;
+            gap: 2px;
+            grid-template-rows: repeat(3,100px);
+            grid-template-areas: 
+            'img1 img2 img3'
+            'img4 img2 img6'
+            'img4 img5 img6'
+            'img7 img5 img6'
+            'img7 img8 img6';
+        }
+        .img1{
+            grid-area: img1;
+        }
+        .img2{
+            grid-area: img2;
+        }
+        .img3{
+            grid-area: img3;
+        }
+        .img4{
+            grid-area: img4;
+        }
+        .img5{
+            grid-area: img5;
+        }
+        .img6{
+            grid-area: img6;
+        }
+        .img7{
+            grid-area: img7;
+        }
+        .img8{
+            grid-area: img8;
+        }
+        
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <img src="https://images.pexels.com/photos/210186/pexels-photo-210186.jpeg?cs=srgb&dl=cascade-clouds-cool-wallpaper-210186.jpg&fm=jpg" alt="" class="img1">
+        <img src="https://images.pexels.com/photos/236047/pexels-photo-236047.jpeg?cs=srgb&dl=clouds-cloudy-countryside-236047.jpg&fm=jpg" alt="" class="img2">
+        <img src="https://images.pexels.com/photos/414612/pexels-photo-414612.jpeg?cs=srgb&dl=pexels-souvenirpixels-414612.jpg&fm=jpg" alt="" class="img3">
+        <img src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?cs=srgb&dl=daylight-environment-forest-459225.jpg&fm=jpg" alt="" class="img4">
+        <img src="https://images.pexels.com/photos/459225/pexels-photo-459225.jpeg?cs=srgb&dl=daylight-environment-forest-459225.jpg&fm=jpg" alt="" class="img5">
+        <img src="https://images.pexels.com/photos/6348018/pexels-photo-6348018.jpeg?cs=srgb&dl=pexels-quang-nguyen-vinh-222549-6348018.jpg&fm=jpg" alt="" class="img6">
+        <img src="https://thewowstyle.com/wp-content/uploads/2015/01/nature-images..jpg" alt="" class="img7">
+        <img src="https://images.pexels.com/photos/31256342/pexels-photo-31256342.jpeg?cs=srgb&dl=pexels-optical-chemist-340351297-31256342.jpg&fm=jpg" alt="" class="img8">
+    </div>
+</body>
+</html>
