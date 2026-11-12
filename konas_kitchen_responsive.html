@@ -1,0 +1,1042 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Discover delicious recipes and fine dining at KONA'S Kitchen.">
+    <title>KONA'S Kitchen</title>
+
+    <style>
+        /* -------------------- BASIC RESET -------------------- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 90px;
+        }
+
+        body {
+            width: 100%;
+            overflow-x: hidden;
+            font-family: Arial, sans-serif;
+            background-color: #f8f5ed;
+            color: #24352b;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+        }
+
+        a {
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        /* -------------------- NAVBAR -------------------- */
+        .navbar {
+            width: 100%;
+            min-height: 82px;
+            padding: 15px clamp(18px, 6vw, 90px);
+            background-color: #142b21;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            gap: 22px;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 3px 15px rgba(0, 0, 0, 0.12);
+        }
+
+        .logo {
+            flex-shrink: 0;
+            color: #d8b66a;
+            font-size: clamp(21px, 2.2vw, 28px);
+            font-weight: bold;
+            letter-spacing: 2px;
+            text-decoration: none;
+            display: inline-block;
+            transform-origin: center;
+        }
+
+        .logo span {
+            color: white;
+        }
+
+        .logo:hover {
+            animation: logoWobble 0.65s ease;
+        }
+
+        .nav-links {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: clamp(12px, 2.2vw, 30px);
+        }
+
+        .nav-links a {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            font-size: 15px;
+            padding: 8px 0;
+            transition: color 0.3s ease, transform 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #d8b66a;
+            transform: translateY(-3px);
+        }
+
+        .nav-button,
+        .hero-button,
+        .reservation-button,
+        .about-button {
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+            font-weight: bold;
+            transition: 0.3s ease;
+        }
+
+        .nav-button {
+            flex-shrink: 0;
+            padding: 12px 20px;
+            background-color: #d8b66a;
+            color: #142b21;
+            border-radius: 3px;
+        }
+
+        .nav-button:hover {
+            background-color: white;
+            transform: translateY(-3px);
+        }
+
+        /* -------------------- HERO SECTION -------------------- */
+        .hero {
+            min-height: clamp(460px, 75vh, 680px);
+            padding: 70px 20px;
+            background-image:
+                linear-gradient(rgba(0, 0, 0, 0.58), rgba(0, 0, 0, 0.58)),
+                url("https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1600&q=85");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            overflow: hidden;
+            animation: heroZoom 16s ease-in-out infinite alternate;
+        }
+
+        .hero-content {
+            width: min(100%, 800px);
+            padding: 20px;
+            animation: fadeUp 1.2s ease both;
+        }
+
+        .hero-content h3 {
+            color: #d8b66a;
+            letter-spacing: clamp(2px, 0.7vw, 5px);
+            margin-bottom: 20px;
+            font-size: clamp(13px, 2vw, 18px);
+        }
+
+        .hero-content h1 {
+            font-size: clamp(36px, 6vw, 68px);
+            line-height: 1.12;
+            margin-bottom: 22px;
+            font-family: Georgia, serif;
+        }
+
+        .hero-content p {
+            max-width: 650px;
+            margin: 0 auto 30px;
+            font-size: clamp(15px, 1.8vw, 18px);
+            line-height: 1.8;
+        }
+
+        .hero-button {
+            padding: 15px 30px;
+            background-color: #d8b66a;
+            color: #142b21;
+        }
+
+        .hero-button:hover {
+            background-color: white;
+            transform: translateY(-5px) scale(1.04);
+            box-shadow: 0 0 22px rgba(216, 182, 106, 0.65);
+        }
+
+        /* -------------------- COMMON SECTIONS -------------------- */
+        .section {
+            padding: clamp(55px, 7vw, 90px) clamp(18px, 8vw, 120px);
+            text-align: center;
+        }
+
+        .section-title {
+            color: #b18b3e;
+            letter-spacing: 4px;
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .section-heading {
+            font-size: clamp(28px, 4vw, 42px);
+            line-height: 1.2;
+            font-family: Georgia, serif;
+            color: #183729;
+            margin-bottom: 20px;
+        }
+
+        .section-description {
+            width: min(100%, 700px);
+            margin: auto;
+            line-height: 1.8;
+            color: #666;
+        }
+
+        /* -------------------- INTRODUCTION -------------------- */
+        .intro {
+            background-color: #fffdf8;
+        }
+
+        .intro-content {
+            width: min(100%, 850px);
+            margin: auto;
+        }
+
+        .intro-content p {
+            line-height: 1.9;
+            color: #666;
+            margin-top: 20px;
+        }
+
+        /* -------------------- RECIPE SECTION -------------------- */
+        .recipes {
+            background-color: #f1eee5;
+        }
+
+        .recipe-container {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+
+        .recipe-card {
+            min-width: 0;
+            background-color: white;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.08);
+            transition: transform 0.4s ease, box-shadow 0.4s ease;
+        }
+
+        .recipe-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.16);
+        }
+
+        .recipe-image {
+            height: clamp(190px, 22vw, 260px);
+            overflow: hidden;
+            position: relative;
+        }
+
+        .recipe-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .recipe-card:hover .recipe-image img {
+            transform: scale(1.1);
+        }
+
+        .recipe-image::after {
+            content: "Yummy! 😋";
+            position: absolute;
+            left: 50%;
+            bottom: 15px;
+            transform: translate(-50%, 15px);
+            padding: 9px 18px;
+            color: #142b21;
+            background: #d8b66a;
+            border-radius: 25px;
+            font-weight: bold;
+            opacity: 0;
+            transition: 0.35s ease;
+            pointer-events: none;
+        }
+
+        .recipe-card:hover .recipe-image::after {
+            opacity: 1;
+            transform: translate(-50%, 0);
+        }
+
+        .recipe-info {
+            padding: clamp(18px, 2vw, 25px);
+        }
+
+        .recipe-info h3 {
+            font-family: Georgia, serif;
+            font-size: clamp(20px, 2vw, 23px);
+            margin-bottom: 12px;
+            color: #183729;
+            transition: color 0.3s ease;
+        }
+
+        .recipe-card:hover .recipe-info h3 {
+            color: #b18b3e;
+        }
+
+        .recipe-info p {
+            color: #777;
+            line-height: 1.7;
+        }
+
+        .recipe-info a {
+            display: inline-block;
+            margin-top: 18px;
+            color: #b18b3e;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s ease;
+        }
+
+        .recipe-info a:hover {
+            color: #183729;
+            letter-spacing: 1px;
+        }
+
+        /* -------------------- CHEF SECTION -------------------- */
+        .about {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: clamp(35px, 6vw, 75px);
+            align-items: center;
+            text-align: left;
+            background-color: #fffdf8;
+        }
+
+        .about-image {
+            width: 100%;
+            height: clamp(330px, 43vw, 520px);
+            overflow: hidden;
+            border-radius: 48% 48% 12px 12px;
+            animation: chefDance 5s ease-in-out infinite;
+        }
+
+        .about-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            object-position: center;
+            transition: transform 0.5s ease;
+        }
+
+        .about-image:hover img {
+            transform: scale(1.07);
+        }
+
+        .about-content h2 {
+            font-size: clamp(29px, 3.5vw, 43px);
+            line-height: 1.2;
+            font-family: Georgia, serif;
+            color: #183729;
+            margin-bottom: 20px;
+        }
+
+        .about-content h4 {
+            color: #b18b3e;
+            letter-spacing: 3px;
+            margin-bottom: 15px;
+        }
+
+        .about-content p {
+            color: #666;
+            line-height: 1.9;
+            margin-bottom: 20px;
+        }
+
+        .about-button {
+            padding: 13px 25px;
+            background-color: #183729;
+            color: white;
+        }
+
+        .about-button:hover {
+            background-color: #d8b66a;
+            color: #183729;
+            transform: translateY(-4px);
+        }
+
+        /* -------------------- COOKING SECTION -------------------- */
+        .cooking {
+            min-height: 430px;
+            padding: 70px 20px;
+            background-image:
+                linear-gradient(rgba(10, 39, 28, 0.78), rgba(10, 39, 28, 0.78)),
+                url("./bg.png");
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            color: white;
+            text-align: center;
+        }
+
+        .cooking-content {
+            width: min(100%, 750px);
+            padding: 25px;
+            animation: fadeUp 1.5s ease both;
+        }
+
+        .cooking-content h2 {
+            font-size: clamp(29px, 4vw, 46px);
+            line-height: 1.2;
+            font-family: Georgia, serif;
+            margin-bottom: 20px;
+        }
+
+        .cooking-content p {
+            line-height: 1.8;
+            font-size: 17px;
+        }
+
+        /* -------------------- COOKBOOK SECTION -------------------- */
+        .cookbook {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+            gap: clamp(30px, 5vw, 60px);
+            align-items: center;
+            text-align: left;
+            background-color: #f1eee5;
+        }
+
+        .cookbook-image {
+            width: 100%;
+            height: clamp(280px, 35vw, 420px);
+            overflow: hidden;
+            border-radius: 10px;
+        }
+
+        .cookbook-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .cookbook-image:hover img {
+            transform: scale(1.08);
+        }
+
+        .cookbook-content h2 {
+            font-family: Georgia, serif;
+            font-size: clamp(29px, 3.5vw, 42px);
+            line-height: 1.2;
+            color: #183729;
+            margin-bottom: 20px;
+        }
+
+        .cookbook-content p {
+            color: #666;
+            line-height: 1.9;
+            margin-bottom: 25px;
+        }
+
+        /* -------------------- RESERVATION SECTION -------------------- */
+        .reservation {
+            background-color: #183729;
+            color: white;
+        }
+
+        .reservation .section-heading {
+            color: white;
+        }
+
+        .reservation .section-description {
+            color: #ddd;
+            margin-bottom: 30px;
+        }
+
+        .reservation-button {
+            padding: 15px 30px;
+            background-color: #d8b66a;
+            color: #183729;
+        }
+
+        .reservation-button:hover {
+            background-color: white;
+            transform: translateY(-4px) scale(1.04);
+            box-shadow: 0 0 22px rgba(216, 182, 106, 0.55);
+        }
+
+        /* -------------------- NEWSLETTER -------------------- */
+        .newsletter {
+            background-color: #fffdf8;
+        }
+
+        .newsletter-form {
+            width: min(100%, 520px);
+            margin: 30px auto 0;
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .newsletter input {
+            flex: 1;
+            min-width: 0;
+            padding: 14px;
+            border: 1px solid #ccc;
+            outline: none;
+            font-size: 15px;
+        }
+
+        .newsletter input:focus {
+            border-color: #b18b3e;
+            box-shadow: 0 0 0 2px rgba(177, 139, 62, 0.15);
+        }
+
+        .newsletter button {
+            padding: 14px 25px;
+            border: none;
+            background-color: #183729;
+            color: white;
+            cursor: pointer;
+            font-size: 15px;
+            transition: 0.3s ease;
+        }
+
+        .newsletter button:hover {
+            background-color: #d8b66a;
+            color: #183729;
+            animation: buttonBounce 0.55s ease;
+        }
+
+        /* -------------------- FOOTER -------------------- */
+        .footer {
+            background-color: #10241b;
+            color: white;
+            padding: 50px clamp(18px, 8vw, 100px) 20px;
+            text-align: center;
+        }
+
+        .footer h2 {
+            color: #d8b66a;
+            font-size: 28px;
+            margin-bottom: 15px;
+        }
+
+        .footer p {
+            color: #ccc;
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 12px 25px;
+            margin-bottom: 25px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-links a:hover {
+            color: #d8b66a;
+        }
+
+        .copyright {
+            padding-top: 20px;
+            margin-top: 20px;
+            border-top: 1px solid #46554c;
+            font-size: 14px;
+        }
+
+        .copyright p {
+            margin: 0;
+        }
+
+        /* -------------------- ANIMATIONS -------------------- */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(35px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes heroZoom {
+            from { background-size: 100% auto; }
+            to { background-size: 110% auto; }
+        }
+
+        @keyframes logoWobble {
+            0%, 100% { transform: rotate(0); }
+            25% { transform: rotate(-8deg); }
+            50% { transform: rotate(8deg); }
+            75% { transform: rotate(-4deg); }
+        }
+
+        @keyframes chefDance {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-7px); }
+        }
+
+        @keyframes buttonBounce {
+            0%, 100% { transform: translateY(0); }
+            35% { transform: translateY(-7px); }
+            65% { transform: translateY(-2px); }
+        }
+
+        /* -------------------- TABLET RESPONSIVENESS -------------------- */
+        @media (max-width: 950px) {
+            .navbar {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 12px 25px;
+                padding: 15px 4%;
+            }
+
+            .nav-links {
+                order: 3;
+                flex-basis: 100%;
+                gap: 12px 25px;
+            }
+
+            .recipe-container {
+                grid-template-columns: repeat(2, minmax(0, 1fr));
+            }
+
+            .about,
+            .cookbook {
+                gap: 35px;
+            }
+        }
+
+        /* -------------------- MOBILE RESPONSIVENESS -------------------- */
+        @media (max-width: 650px) {
+            html {
+                scroll-padding-top: 145px;
+            }
+
+            .navbar {
+                position: sticky;
+                padding: 13px 14px;
+                gap: 10px;
+            }
+
+            .logo {
+                width: 100%;
+                text-align: center;
+            }
+
+            .nav-links {
+                order: 2;
+                width: 100%;
+                gap: 5px 16px;
+            }
+
+            .nav-links a {
+                font-size: 13px;
+                padding: 5px 0;
+            }
+
+            .nav-button {
+                order: 3;
+                padding: 9px 16px;
+                font-size: 13px;
+            }
+
+            .hero {
+                min-height: 490px;
+                padding: 55px 14px;
+                background-position: center;
+                animation: none;
+            }
+
+            .hero-content {
+                padding: 10px;
+            }
+
+            .hero-content h3 {
+                margin-bottom: 15px;
+            }
+
+            .hero-content h1 {
+                font-size: clamp(34px, 10vw, 48px);
+            }
+
+            .hero-content p {
+                font-size: 15px;
+                line-height: 1.7;
+            }
+
+            .section {
+                padding: 55px 18px;
+            }
+
+            .section-title {
+                letter-spacing: 3px;
+            }
+
+            .section-heading {
+                font-size: clamp(27px, 8vw, 34px);
+            }
+
+            .recipe-container {
+                grid-template-columns: 1fr;
+                gap: 22px;
+                margin-top: 35px;
+            }
+
+            .recipe-image {
+                height: 240px;
+            }
+
+            .recipe-info {
+                padding: 22px;
+            }
+
+            .about,
+            .cookbook {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 30px;
+            }
+
+            .about-image {
+                width: min(100%, 390px);
+                height: 390px;
+                margin: auto;
+                border-radius: 48% 48% 12px 12px;
+            }
+
+            .about-content h2,
+            .cookbook-content h2 {
+                font-size: 32px;
+            }
+
+            .cooking {
+                min-height: 370px;
+                padding: 55px 15px;
+            }
+
+            .cooking-content {
+                padding: 10px;
+            }
+
+            .cooking-content h2 {
+                font-size: 32px;
+            }
+
+            .cooking-content p {
+                font-size: 15px;
+            }
+
+            .cookbook-image {
+                height: 300px;
+            }
+
+            .newsletter-form {
+                flex-direction: column;
+            }
+
+            .newsletter input,
+            .newsletter button {
+                width: 100%;
+            }
+
+            .footer {
+                padding: 40px 18px 20px;
+            }
+
+            .footer-links {
+                gap: 12px 18px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .nav-links {
+                gap: 5px 11px;
+            }
+
+            .nav-links a {
+                font-size: 12px;
+            }
+
+            .about-image {
+                height: 310px;
+            }
+
+            .recipe-image {
+                height: 210px;
+            }
+        }
+
+        /* Respect visitors who prefer reduced motion */
+        @media (prefers-reduced-motion: reduce) {
+            *,
+            *::before,
+            *::after {
+                animation-duration: 0.01ms !important;
+                animation-iteration-count: 1 !important;
+                scroll-behavior: auto !important;
+                transition-duration: 0.01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- NAVBAR -->
+    <nav class="navbar">
+        <a href="#home" class="logo">KONA'S <span>Kitchen</span></a>
+
+        <div class="nav-links">
+            <a href="#home">Home</a>
+            <a href="#story">About</a>
+            <a href="#recipes">Recipes</a>
+            <a href="#chef">Our Chef</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+        <a href="#reservation" class="nav-button">Book a Table</a>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h3>WELCOME TO KONA'S KITCHEN</h3>
+            <h1>Experience The Art Of Fine Dining</h1>
+            <p>
+                Discover delicious flavours, traditional recipes and
+                extraordinary food experiences prepared with passion.
+            </p>
+            <a href="#recipes" class="hero-button">Explore Recipes</a>
+        </div>
+    </section>
+
+    <!-- INTRO SECTION -->
+    <section class="section intro" id="story">
+        <div class="intro-content">
+            <h4 class="section-title">OUR STORY</h4>
+            <h2 class="section-heading">A Taste Of Tradition And Elegance</h2>
+            <p>
+                At KONA'S Kitchen, we believe that food is more than just
+                a meal. It is an experience that brings people together.
+                Our kitchen combines traditional cooking techniques,
+                fresh ingredients and creative flavours to deliver
+                unforgettable dining experiences.
+            </p>
+        </div>
+    </section>
+
+    <!-- RECIPES SECTION -->
+    <section class="section recipes" id="recipes">
+        <h4 class="section-title">OUR SPECIALITIES</h4>
+        <h2 class="section-heading">Discover Our Signature Recipes</h2>
+        <p class="section-description">
+            Explore our carefully selected dishes made with fresh
+            ingredients and authentic flavours.
+        </p>
+
+        <div class="recipe-container">
+            <div class="recipe-card">
+                <div class="recipe-image">
+                    <img src="https://static.vecteezy.com/system/resources/previews/067/391/814/non_2x/plated-spicy-biryani-dish-with-rich-textures-and-detail-photo.jpg"
+                         alt="Delicious royal biryani" loading="lazy">
+                </div>
+                <div class="recipe-info">
+                    <h3>Royal Biryani</h3>
+                    <p>A delicious combination of aromatic rice, rich spices and traditional flavours.</p>
+                    <a href="#reservation">Discover More →</a>
+                </div>
+            </div>
+
+            <div class="recipe-card">
+                <div class="recipe-image">
+                    <img src="https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=800&q=85"
+                         alt="Grilled food" loading="lazy">
+                </div>
+                <div class="recipe-info">
+                    <h3>Grilled Special</h3>
+                    <p>Perfectly grilled food prepared with special herbs and delicious seasonings.</p>
+                    <a href="#reservation">Discover More →</a>
+                </div>
+            </div>
+
+            <div class="recipe-card">
+                <div class="recipe-image">
+                    <img src="https://images.unsplash.com/photo-1473093295043-cdd812d0e601?auto=format&fit=crop&w=800&q=85"
+                         alt="Italian pasta" loading="lazy">
+                </div>
+                <div class="recipe-info">
+                    <h3>Italian Pasta</h3>
+                    <p>Freshly prepared pasta with rich sauces, herbs and authentic Italian flavours.</p>
+                    <a href="#reservation">Discover More →</a>
+                </div>
+            </div>
+
+            <div class="recipe-card">
+                <div class="recipe-image">
+                    <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=85"
+                         alt="Traditional curry" loading="lazy">
+                </div>
+                <div class="recipe-info">
+                    <h3>Traditional Curry</h3>
+                    <p>A rich and flavourful curry made with carefully selected spices and ingredients.</p>
+                    <a href="#reservation">Discover More →</a>
+                </div>
+            </div>
+
+            <div class="recipe-card">
+                <div class="recipe-image">
+                    <img src="https://images.unsplash.com/photo-1528207776546-365bb710ee93?auto=format&fit=crop&w=800&q=85"
+                         alt="Fresh pancakes" loading="lazy">
+                </div>
+                <div class="recipe-info">
+                    <h3>Golden Pancakes</h3>
+                    <p>Soft and fluffy pancakes served with delicious toppings and fresh ingredients.</p>
+                    <a href="#reservation">Discover More →</a>
+                </div>
+            </div>
+
+            <div class="recipe-card">
+                <div class="recipe-image">
+                    <img src="https://images.unsplash.com/photo-1540189549336-e6e99c3679fe?auto=format&fit=crop&w=800&q=85"
+                         alt="Fresh healthy salad" loading="lazy">
+                </div>
+                <div class="recipe-info">
+                    <h3>Fresh Garden Salad</h3>
+                    <p>A healthy combination of fresh vegetables, natural flavours and nutritious ingredients.</p>
+                    <a href="#reservation">Discover More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ABOUT CHEF SECTION -->
+    <section class="section about" id="chef">
+        <div class="about-image">
+            <img src="./chef.png" alt="Male professional chef" loading="lazy">
+        </div>
+
+        <div class="about-content">
+            <h4>MEET OUR CHEF</h4>
+            <h2>Passion For Cooking, Excellence In Every Dish</h2>
+            <p>
+                Our professional chef brings creativity, experience
+                and passion to every dish. With a deep understanding
+                of traditional and modern cooking techniques,
+                every recipe is prepared with attention to detail.
+            </p>
+            <p>
+                At KONA'S Kitchen, we believe that great food starts
+                with quality ingredients, dedication and love for cooking.
+            </p>
+            <a href="#contact" class="about-button">Know More</a>
+        </div>
+    </section>
+
+    <!-- COOKING SECTION -->
+    <section class="cooking">
+        <div class="cooking-content">
+            <h2>Cooking Is An Art, Food Is An Experience</h2>
+            <p>
+                Every ingredient tells a story. Every recipe creates
+                a memory. We bring together the finest ingredients
+                and culinary creativity to make every meal special.
+            </p>
+        </div>
+    </section>
+
+    <!-- COOKBOOK SECTION -->
+    <section class="section cookbook">
+        <div class="cookbook-image">
+            <img src="./fruits.png" alt="Fresh fruits and vegetables" loading="lazy">
+        </div>
+
+        <div class="cookbook-content">
+            <h4 class="section-title">OUR COOKBOOK</h4>
+            <h2>Bring The Taste Of Our Kitchen To Your Home</h2>
+            <p>
+                Explore our collection of special recipes and discover
+                the secrets behind delicious cooking. From traditional
+                dishes to modern creations, find inspiration for your
+                next cooking experience.
+            </p>
+            <a href="#recipes" class="about-button">Explore Recipes</a>
+        </div>
+    </section>
+
+    <!-- RESERVATION SECTION -->
+    <section class="section reservation" id="reservation">
+        <h4 class="section-title">JOIN US</h4>
+        <h2 class="section-heading">Make Your Dining Experience Special</h2>
+        <p class="section-description">
+            Enjoy delicious food, a welcoming atmosphere and
+            unforgettable moments with your family and friends.
+        </p>
+        <a href="#contact" class="reservation-button">Reserve Your Table</a>
+    </section>
+
+    <!-- NEWSLETTER SECTION -->
+    <section class="section newsletter" id="contact">
+        <h4 class="section-title">STAY CONNECTED</h4>
+        <h2 class="section-heading">Subscribe To Our Newsletter</h2>
+        <p class="section-description">
+            Get updates about our latest recipes, special dishes
+            and upcoming food experiences.
+        </p>
+
+        <form class="newsletter-form" action="#">
+            <input type="email" placeholder="Enter your email address"
+                   aria-label="Email address" required>
+            <button type="submit">Subscribe</button>
+        </form>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <h2>KONA'S KITCHEN</h2>
+        <p>
+            Creating memorable dining experiences with passion,
+            tradition and exceptional flavours.
+        </p>
+
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#story">About</a>
+            <a href="#recipes">Recipes</a>
+            <a href="#chef">Our Chef</a>
+            <a href="#contact">Contact</a>
+        </div>
+
+        <div class="copyright">
+            <p>© 2026 KONA'S Kitchen. All Rights Reserved.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
